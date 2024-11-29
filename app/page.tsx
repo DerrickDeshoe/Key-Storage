@@ -1,3 +1,5 @@
+
+"use client"
 import Image from "next/image";
 import HomeImage from "../public/images/HomeTanks.svg";
 import Link from "next/link";
@@ -10,7 +12,73 @@ import Isaac from "../public/images/Isaac.svg";
 import Tanatswa from "../public/images/Tanatswa.svg";
 import Lock from "../public/images/Lock.svg";
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 export default function Home() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    arrows: false,
+    slidesToShow: 4, // Number of cards visible at once
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000, // Auto-slide interval (3 seconds)
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 760,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
+  const setting = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    arrows: false,
+    slidesToShow: 3, // Number of cards visible at once
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000, // Auto-slide interval (3 seconds)
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+        {
+          breakpoint: 760,
+          settings: {
+            slidesToShow: 1,
+          },
+      },
+    ],
+  };
+
   return (
     <div className="w-[100%]">
       <div className="flex flex-wrap w-[100%] h-[100vh] px-[5%] lg:px-[8%] justify-between">
@@ -52,12 +120,12 @@ export default function Home() {
           <div className="w-[7%] h-[2px] bg-black"></div>
           <h3 className="font-nunitoBold lg:text-3xl">STORAGE SERVICE</h3>
         </div>
-        <div className="flex space-x-2">
+        <Slider {...settings}>
           <StorageCard image={Card1} name="VEHICLE" name2="STORAGE" />
           <StorageCard image={Card1} name="HOUSEHOLD" name2="STORAGE" />
-          {/* <StorageCard image={Card1} name="BUSINESS" name2="STORAGE" />
-          <StorageCard image={Card1} name="DOCUMENT" name2="STORAGE" /> */}
-        </div>
+          <StorageCard image={Card1} name="BUSINESS" name2="STORAGE" />
+          <StorageCard image={Card1} name="DOCUMENT" name2="STORAGE" />
+        </Slider>
       </div>
 
       <div className=" flex flex-col space-y-4 lg:space-x-3 lg:space-y-10 pt-[10%] lg:pt-[5%]  px-[5%]">
@@ -89,7 +157,7 @@ export default function Home() {
             WHAT SIZE STORAGE DO YOU NEED
           </h3>
         </div>
-        <div className="flex space-x-3">
+        <Slider {...setting} >
           <SizeCard
             size="1.1m x 1.6m"
             description="Gender equality is fundamental to the realization 
@@ -108,7 +176,19 @@ export default function Home() {
                         of human rights and a desire to benefit society as 
                         a whole, including girls and women."
           />
-        </div>
+          <SizeCard
+            size="1.1m x 1.6m"
+            description="Gender equality is fundamental to the realization 
+                        of human rights and a desire to benefit society as 
+                        a whole, including girls and women."
+          />
+          <SizeCard
+            size="1.1m x 1.6m"
+            description="Gender equality is fundamental to the realization 
+                        of human rights and a desire to benefit society as 
+                        a whole, including girls and women."
+          />
+            </Slider>
         <div className="flex justify-center">
           <Link href="/Contact">
             <button className="border border-black p-2 rounded-md px-2 lg:px-6 font-semibold text-xs lg:text-sm text-black ">
@@ -172,9 +252,11 @@ export default function Home() {
         <div className="flex lg:hidden h-[80vh] bg-black"></div>
       </div>
 
-      <div className="bg-orange flex flex-wrap-reverse px-[5%] lg:px-[8%] py-[5%] justify-between gap-[5%] lg:gap-y-0">
+      <div className="bg-orange flex flex-wrap-reverse px-[5%] lg:px-[8%] py-[5%]  justify-between gap-[5%] lg:gap-y-0">
         <div className="lg:w-[45%] flex flex-col text-black space-y-3 xl:justify-center">
-          <h4 className="font-bold lg:text-2xl lg:mb-5">GET IN TOUCH WITH US</h4>
+          <h4 className="font-bold lg:text-2xl lg:mb-5">
+            GET IN TOUCH WITH US
+          </h4>
           <input
             type="email"
             name="email"
@@ -205,7 +287,7 @@ export default function Home() {
             </button>
           </Link>
         </div>
-        <div className="lg:w-[45%]">
+        <div className="lg:w-[45%] mb-4 lg:mb-0">
           <Image src={Lock} alt="Lock" />
         </div>
       </div>

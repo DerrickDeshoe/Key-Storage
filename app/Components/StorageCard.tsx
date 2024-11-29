@@ -68,7 +68,7 @@ interface Card {
 
 const StorageCard = (props: Card) => {
   return (
-    <div className="relative lg:w-[30%]">
+    <div className="relative w-[100%] lg:w-[100%]">
       <div className="absolute top-4 lg:top-6 left-[7%]">
         <Image src={CardImage} alt="CardImage" className="w-[80%]" />
       </div>
